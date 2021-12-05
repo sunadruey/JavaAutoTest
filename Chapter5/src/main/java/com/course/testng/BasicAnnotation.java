@@ -36,6 +36,15 @@ public class BasicAnnotation {
         System.out.println("AfterClass这是在类运行之后运行的方法");
     }
 
+//  suit测试套件把class（类）包裹起来了 ，类属于测试套件之下
+    @BeforeSuite
+    public  void  beforeSuite(){
+        System.out.println("BeforeSuite测试套件");
+    }
 
+    @AfterSuite
+    public  void  afterSuite(){
+        System.out.println("AfterSuite测试套件");
+    }
 
 }
