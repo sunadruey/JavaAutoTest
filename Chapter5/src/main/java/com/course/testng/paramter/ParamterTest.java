@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
  */
 public class ParamterTest {
 
-
     @Test
     @Parameters({"name","age"})
     public  void paramterTest1(String name ,int age){
