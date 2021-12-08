@@ -1,0 +1,26 @@
+[
+  {
+    "description":"模拟一个没有参数的get请求",
+    "request":{
+    "uri":"/getdemo",
+    "method": "get"
+  },
+    "response":{
+      "text":"这是一个没有参数的get请求"
+    }
+  },
+  {
+    "description":"模拟一个带参数的get请求",
+    "request":{
+      "uri":"/getwithparam",
+      "method": "get",
+      "queries": {
+        "name": "赵丽颖",
+        "age": "18"
+      }
+    },
+    "response":{
+      "text":"有匪的赵丽颖！！！！"
+    }
+ }
+]

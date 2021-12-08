@@ -1,0 +1,27 @@
+[
+  {
+    "description":"这是我们的第一个mock例子",
+    "request":{
+      "uri":"/postdemo",
+      "method": "post"
+    },
+    "response":{
+      "text":"这是我的第一个mock的post请求"
+    }
+  },
+  {
+    "description":"这是我们的第一个mock-post例子",
+    "request":{
+      "uri":"/postwithparam",
+      "method": "post",
+      "forms": {
+        "name": "赵丽颖",
+        "sex": "女"
+      }
+    },
+    "response":{
+      "text":"赵丽颖带参数的post请求"
+    }
+  }
+
+]

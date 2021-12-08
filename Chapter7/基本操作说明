@@ -1,0 +1,6 @@
+java -jar ./moco-runner-0.11.0-standalone.jar http -p 8888  -c startup1.json
+热部署
+带参数和不带参数的get请求
+ java -jar ./moco-runner-0.11.0-standalone.jar http -p 8888  -c StartupGet.json
+http://localhost:8888/getwithparam?name=赵丽颖&age=18
+StartupwtihCookies.json
