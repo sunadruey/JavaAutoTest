@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="我自己的接口测试套件">
+    <test  name="这些是测试模块">
+      <classes>
+          <class  name="com.test.extend.demo.TestMethodsDemo">
+              <methods>
+                  <include  name="test1"/>
+                  <include  name="test2"/>
+                  <include  name="test3"/>
+                  <include name="logDemo"/>
+              </methods>
+<!--
+这样还不会出来报告，涉及到监听器
+-->
+
+          </class>
+      </classes>
+
+    </test>
+
+<listeners>
+<!--    <listener  class-name="com.vimalselvam.testng.listener.ExtentTestNgFormatter"/>-->
+    <listener  class-name="com.test.extend.demo.ExtentTestNgIReporterListener"/>
+</listeners>
+</suite>
