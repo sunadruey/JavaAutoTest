@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="我自己的接口测试套件">
+    <test  name="这些是测试模块">
+        <classes>
+            <class name="com.course.httpclient.cookies.TestMyCookiesForGet"/>
+
+        </classes>
+
+    </test>
+</suite>

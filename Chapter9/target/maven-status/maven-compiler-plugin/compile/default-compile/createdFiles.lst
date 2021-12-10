@@ -1,0 +1,5 @@
+com/course/httpclient/cookies/TestMyCookiesForGet.class
+com/course/httpclient/demo/TestHttpClient.class
+com/course/httpclient/demo/HttpClientUtil.class
+com/course/httpclient/demo/HttpMethod.class
+com/course/httpclient/demo/GetMethod.class
