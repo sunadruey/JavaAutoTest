@@ -1,11 +1,11 @@
 package com.course.httpclient.cookies;
 
-
 import org.apache.commons.httpclient.Cookie;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.apache.http.client.CookieStore;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -18,6 +18,7 @@ public class TestMyCookiesForGet {
     private String url;
     private ResourceBundle bundle;
     private Cookie[] cookies;
+    private CookieStore store;
 
 
     @BeforeTest
@@ -35,12 +36,12 @@ public class TestMyCookiesForGet {
         HttpClient client = new HttpClient();
         // Create a method instance.
         GetMethod method = new GetMethod(testUrl);
-
         method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
                 new DefaultHttpMethodRetryHandler(3, false));
         client.executeMethod(method);
 
         this.cookies = client.getState().getCookies();
+
         if (cookies.length == 0) {
             //如果获取cookies为空
             System.out.println("None");
@@ -58,9 +59,6 @@ public class TestMyCookiesForGet {
                 System.out.println(a);
             }
 
-
-//       System.out.println(Arrays.toString(client.getState().getCookies()));
-
             // Read the response body.
             byte[] responseBody = method.getResponseBody();
 
@@ -68,24 +66,28 @@ public class TestMyCookiesForGet {
             // Use caution: ensure correct character encoding and is not binary data
             System.out.println(new String(responseBody));
 
-
         }
     }
     @Test(dependsOnMethods = {"testGetCookies"})
-    public void testGetWithCookies() throws IOException {
+    public <List> void testGetWithCookies() throws IOException {
         String result;
         String uri = bundle.getString("getWithCookies.uri");
         String testUrl = this.url + uri;
         // Create an instance of HttpClient.
         HttpClient client = new HttpClient();
-        System.out.println("url  +  "+ testUrl);
 
+        //设置cookis
+        System.out.println("==========Cookies============");
+        int j = 0;
+        for (Cookie c: this.cookies) {
+            System.out.println(++j + ":   " + c);
+        }
+        client.getState().addCookies(this.cookies);
+
+        System.out.println("url  +  "+ testUrl);
         // Create a method instance.
         GetMethod method = new GetMethod(testUrl);
         client.executeMethod(method);
-        //设置cookis
-
-
 
         //获取状态码
         int statusCode=method.getStatusLine().getStatusCode();
@@ -93,9 +95,12 @@ public class TestMyCookiesForGet {
         if(statusCode ==200){
 
             byte[] responseBody = method.getResponseBody();
+
+
             // Deal with the response.
             // Use caution: ensure correct character encoding and is not binary data
             System.out.println(new String(responseBody));
+
 
         }
 
@@ -103,5 +108,7 @@ public class TestMyCookiesForGet {
 
 
     }
+
+
 }
 
